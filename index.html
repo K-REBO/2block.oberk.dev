@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+	<a-assets>
+		<a-asset-item id="deco-obj" src="saved.obj"></a-asset-item>
+        <a-asset-item id="deco-mtl" src="saved.mtl"></a-asset-item>
+	</a-assets>
+    <a-scene>
+		<a-obj-model position="-10 -5 -10" rotation="0 0 0" src="#deco-obj" mtl="#deco-mtl"
+		animation="property: rotation;
+		from: 0 0 0;
+		to: 0 360 0;
+		dir: alternate;
+		dur: 10000;
+		loop: true;
+		easing: easeInOutSine"
+		></a-obj-model>
+		<a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>
