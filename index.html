@@ -1,23 +1,22 @@
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
   </head>
-  <body>
-	<a-assets>
-		<a-asset-item id="deco-obj" src="saved.obj"></a-asset-item>
-        <a-asset-item id="deco-mtl" src="saved.mtl"></a-asset-item>
-	</a-assets>
-    <a-scene>
-		<a-obj-model position="-10 -5 -10" rotation="0 0 0" src="#deco-obj" mtl="#deco-mtl"
-		animation="property: rotation;
-		from: 0 0 0;
-		to: 0 360 0;
-		dir: alternate;
-		dur: 10000;
-		loop: true;
-		easing: easeInOutSine"
-		></a-obj-model>
-		<a-sky color="#ECECEC"></a-sky>
-    </a-scene>
-  </body>
+<body>
+  	<a-scene>
+
+		<a-assets>
+			<a-asset-item id="demo-obj" src="saved.obj"></a-asset-item>
+			<a-asset-item id="demo-mtl" src="saved.mtl"></a-asset-item>
+		</a-assets>
+	
+
+  	  	<a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; maxPolarAngle:180; minDistance: 0.5; maxDistance: 200; initialPosition: 0 0 30"></a-entity>    
+		
+			<a-obj-model position="0 -10 0" scale="2 2 2" src="#demo-obj" mtl="#demo-mtl"></a-obj-model>
+		
+  	  	<a-sky color="#9EA1E7"></a-sky>
+  	</a-scene>
+</body>
 </html>
