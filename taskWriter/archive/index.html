@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8weather">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title TaskSheats></title>
+	<link rel="stylesheet" href="output.css">
+</head>
+<body>
+	<h1 id="date" class="text-4xl font-medium text-center"/>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<h3 id="weather" class="text-3xl font-medium text-center"></h3>
+	<div>予想最高気温</div>
+	<div>暑さ指数</div>
+	<div>作業　日目</div>
+	<div>
+		<div>
+			<span>ST練</span>
+
+		</div>
+		<div>
+			<span>競技連</span>
+			
+		</div>	
+	</div>
+
+
+
+
+</body>
+<script>
+{
+	const apiLink = "http://localhost:8080";
+
+
+
+
+	addDate();
+	addWeather();
+
+
+
+
+
+
+
+	function addWeather() {
+		const icon_list = {
+			"rainbow": "🌈",
+			"sun": "🌞",
+			"sun_cloud": "⛅",
+			"cloud": "☁",
+			"rain": "☔",
+		};
+		const weather = "rainbow";// TODO! fetch HERE
+		document.querySelector("#weather").innerHTML = `天気 ${icon_list[weather]}`;
+	}
+	function addDate() {
+		const week = ["日","月","火","水","木","金","土"];
+		const date = new Date();
+		const month = date.getMonth();
+		const day = date.getDate();
+		const weekday = week[date.getDay()];
+		document.querySelector("#date").innerHTML = `${month}月${day}日(${weekday})タスク表`;
+	}
+}
+</script>
+</html>

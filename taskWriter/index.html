@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	
+</body>
+<script>
+{
+	"use strict"
+
+	function addDate() {
+		const week = ["日","月","火","水","木","金","土"];
+		const date = new Date();
+		const month = date.getMonth();
+		const day = date.getDate();
+		const weekday = week[date.getDay()];
+		document.querySelector("#date").innerHTML = `${month}月${day}日(${weekday})タスク表`;
+	}
+}
+
+</script>
+</html>
