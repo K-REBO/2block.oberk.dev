@@ -2,9 +2,9 @@
   <head>
 	<meta lang="ja">
 	<meta charset="utf-8"/>
-    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+	<script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
-	<title>Wed Aug  4 01:52:11 PM JST 2021</title>
+	<title>Bread</title>
   </head>
 <body>
 	<div class="fixed text-4xl" style="z-index: 1000;">
@@ -12,7 +12,7 @@
 			2block パン
 		</span>
 	</div>
-	<a-scene  vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+	<a-scene  vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" inspector="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
 
 		<a-assets>
 
@@ -23,7 +23,7 @@
 
   	  	<a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; maxPolarAngle:180; minDistance: 0.5; maxDistance: 200; initialPosition: 0 0 30"></a-entity>    
 		
-			<a-obj-model position="0 2 0" scale="2 2 2" src="#demo-obj" mtl="#demo-mtl"></a-obj-model>
+			<a-obj-model position="0 -40 120" scale="10 10 10" src="#demo-obj" mtl="#demo-mtl"></a-obj-model>
 		
 			<!-- <a-entity gltf-model="#demo" mtl="#demo-mtl" position="0 -10 0" scale="2 2 2"></a-entity> -->
 
