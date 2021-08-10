@@ -4,31 +4,26 @@
 	<meta charset="utf-8"/>
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
-	<title>Wed Aug  4 01:52:11 PM JST 2021</title>
+	<link rel="icon" href="https://2block.oberk.dev/favicon.ico" />
 	<link rel="stylesheet" href="output.css">
+	<title>View</title>
   </head>
 <body>
 	<div class="fixed text-4xl" style="z-index: 1000;">
 		<span>
-			2block 鉄パイプ図
+			2block 全体図
 		</span>
 	</div>
 	<a-scene  vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 
 		<a-assets>
 
-			<!-- <a-asset-item id="demo" src="tmp.gltf"></a-asset-item> -->
-			<a-asset-item id="demo-obj" src="saved.obj"></a-asset-item>
-			<a-asset-item id="demo-mtl" src="saved.mtl"></a-asset-item>
+			<a-asset-item id="demo" src="tmp.glb"></a-asset-item>
 		</a-assets>
 	
 
   	  	<a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; maxPolarAngle:180; minDistance: 0.5; maxDistance: 200; initialPosition: 0 0 30"></a-entity>    
-		
-			<a-obj-model position="0 -10 0" scale="2 2 2" src="#demo-obj" mtl="#demo-mtl"></a-obj-model>
-		
-			<!-- <a-entity gltf-model="#demo" mtl="#demo-mtl" position="0 -10 0" scale="2 2 2"></a-entity> -->
-
+			<a-entity gltf-model="#demo" position="0 -10 0"></a-entity>
   	  	<a-sky color="#9EA1E7"></a-sky>
   	</a-scene>
 </body>
