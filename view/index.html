@@ -24,8 +24,13 @@
 		</button>
 	</a>
 	<a-scene  vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-  	  	<a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; maxPolarAngle:180; minDistance: 0.5; maxDistance: 200; initialPosition: 0 0 30"></a-entity>
-			<a-gltf-model src="tmp.glb" position="0 -10 0" shadow="receive: true"></a-gltf-model>
+
+		<a-assets>
+			<a-asset-item id="deco" src="tmp.glb"></a-asset-item>
+		</a-assets>
+
+		<a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; maxPolarAngle:180; minDistance: 0.5; maxDistance: 200; initialPosition: 0 0 30"></a-entity>
+		<a-entity gltf-model="#deco" position="0 -10 0" shadow="receive: true"></a-entity>
   	  	<a-sky color="#9EA1E7"></a-sky>
   	</a-scene>
 </body>
