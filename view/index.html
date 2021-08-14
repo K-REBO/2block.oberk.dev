@@ -5,15 +5,25 @@
 	<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
 	<link rel="icon" href="https://2block.oberk.dev/favicon.ico" />
+	<link rel="author" href="humans.txt"/>
 	<link rel="stylesheet" href="output.css">
 	<title>2block 凸</title>
   </head>
 <body>
+
 	<div class="fixed text-4xl" style="z-index: 1000;">
 		<span>
 			2block 凸
 		</span>
+		<a
+			class="text-3xl bottom-10 rounded-xl left-10 border-4 border-indigo-600 text-right"
+			style="background: hsl(48, 100%, 67%)"
+			href="https://github.com/K-REBO"
+		>
+			auther
+		</a>
 	</div>
+
 
 	<a href="https://2block.oberk.dev/pillar">
 		<button 
@@ -24,11 +34,10 @@
 		</button>
 	</a>
 	<a-scene  vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-
 		<a-assets>
 			<a-asset-item id="deco" src="tmp.glb"></a-asset-item>
 		</a-assets>
-
+		
 		<a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; maxPolarAngle:180; minDistance: 0.5; maxDistance: 200; initialPosition: 0 0 30"></a-entity>
 		<a-entity gltf-model="#deco" position="0 -10 0" shadow="receive: true"></a-entity>
   	  	<a-sky color="#9EA1E7"></a-sky>
