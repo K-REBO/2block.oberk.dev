@@ -1,0 +1,22 @@
+<html>
+  <head>
+	<meta lang="ja">
+	<meta charset="utf-8"/>
+	<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+	<link rel="icon" href="https://2block.oberk.dev/favicon.ico" />
+	<link rel="author" href="humans.txt"/>
+	<title>2block 凸</title>
+  </head>
+<body>
+	<a-scene  vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+		<a-assets>
+			<a-asset-item id="deco" src="./parts/外壁.gltf"></a-asset-item>
+		</a-assets>
+		
+		<a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; maxPolarAngle:180; minDistance: 0.5; maxDistance: 200; initialPosition: 0 0 30"></a-entity>
+		<a-entity gltf-model="#deco" position="0 -10 0" shadow="receive: true"></a-entity>
+  	  	<a-sky color="#9EA1E7"></a-sky>
+  	</a-scene>
+</body>
+</html>
