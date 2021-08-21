@@ -4,14 +4,281 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="output.css">
+	<style>
+		table,
+		td {
+		    border: 2px solid #333;
+		}
+
+		thead,
+		tfoot {
+		    background-color: #333;
+		    color: #fff;
+		}
+	</style>
 </head>
-<body>
-	
+<body class="text-center">
+	<h1 id="date" class="text-5xl"></h1>
+	<h2 class="text-2xl">天気: <span id="weather_icon"></span></h2>
+	<h2 class="text-2xl">気温: <span id="temp"></span>℃</h2>
+	<h2 class="text-2xl" >暑さ指数:<span id="WBGT"></span></h2>
+	<h2 class="text-2xl">作業日数: <span id="todal_day"></span></h2>
+	<h2 class="text-2xl">締め時間: <span id="shime_time"></span></h2>
+	<h2 class="text-2xl">締め場所: <span id="shime_place"></span></h2>
+
+	<table class="m-auto text-2xl" style="width: 95%; height: 50ex;">
+		<thead>
+			<tr>
+				<td>作業場所</td>
+				<td>担当</td>
+				<td>作業内容</td>
+				<td>WBS No.</td>
+				<td>作業終了</td>
+				<td>撤退時間</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>駐輪場</td>
+				<td id="manager_parking"   ></td>
+				<td id="content_parking"   ></td>
+				<td id="WBS_parking"       ></td>
+				<td id="finish_parking"    ></td>
+				<td id="evacuation_parking"></td>
+			</tr>
+			<tr>
+				<td><div>ペンキ場</div><div>(西駐輪)</div></td>
+				<td id="manager_paint_west"   >2</td>
+				<td id="content_paint_west"   >3</td>
+				<td id="WBS_paint_west"       >4</td>
+				<td id="finish_paint_west"    >5</td>
+				<td id="evacuation_paint_west">6</td>
+			</tr>
+			<tr>
+				<td><div>ペンキ場</div><div>(校舎南)</div></td>
+				<td id="manager_paint_south"   >2</td>
+				<td id="content_paint_south"   >3</td>
+				<td id="WBS_paint_south"       >4</td>
+				<td id="finish_paint_south"    >5</td>
+				<td id="evacuation_paint_south">6</td>
+			</tr>
+			<tr>
+				<td><div>教室</div><div>(14HR)</div></td>
+				<td id="manager_14HR"   >2</td>
+				<td id="content_14HR"   >3</td>
+				<td id="WBS_14HR"       >4</td>
+				<td id="finish_14HR"    >5</td>
+				<td id="evacuation_14HR">6</td>
+			</tr>
+			<tr>
+				<td><div>教室</div><div>(23HR)</div></td>
+				<td id="manager_23HR"   >2</td>
+				<td id="content_23HR"   >3</td>
+				<td id="WBS_23HR"       >4</td>
+				<td id="finish_23HR"    >5</td>
+				<td id="evacuation_23HR">6</td>
+			</tr>
+			<tr>
+				<td><div>教室</div><div>(32HR)</div></td>
+				<td id="manager_32HR"   >2</td>
+				<td id="content_32HR"   >3</td>
+				<td id="WBS_32HR"       >4</td>
+				<td id="finish_32HR"    >5</td>
+				<td id="evacuation_32HR">6</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="mt-10">
+		<span class="text-4xl">ST練</span>
+		<table class="text-2xl mt-3 mx-auto">
+			<thead>
+				<tr>
+					<th>時間</th>
+					<th>場所</th>
+					<th>役</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>12:35 ~ 13:00</td>
+					<td>第一会議室</td>
+					<td>フィナーレ</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="mt-10">
+		<span class="text-4xl">競技練</span>
+		<table class="text-2xl mt-3 mx-auto">
+			<thead>
+				<tr>
+					<th>時間</th>
+					<th>場所</th>
+					<th>役</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>16:35 ~ 17:00</td>
+					<td>運動場</td>
+					<td>SCAT-MEN</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+	<div class="border-2 border-black rounded-lg mt-3 mb-5 mx-auto" style="width:95%">
+		<span class="text-3xl">特記事項</span>
+		<div class="text-xl" id="remarks">
+		</div>
+
+	</div>
 </body>
 <script>
-{
-	"use strict"
+{"use strict"
 
+	class Deco {
+		place;
+		manager;
+		work_content;
+		WBS_No;
+		finish_date;
+		evacuation_date;
+		constructor(place, manager, work_content, WBS_No, finish_date, evacuation_date) {
+			this.place = place;
+			this.manager = manager;
+			this.work_content = work_content;
+			this.WBS_No = WBS_No;
+			this.finish_date = finish_date;
+			this.evacuation_date = evacuation_date;
+		}
+	}
+
+
+	addDate();
+	addWeather();
+	getDeco();
+	addWBGT();
+	addTotalDay();
+	addTemp();
+	addShime();
+	addRemarks(["リサ木配布あり","鉄パ搬入"]);
+
+	function getDeco() {
+		// !TODO fethc data
+		const parking = new Deco("駐輪場",["美童"],["壁"],[20221,20223],"16:20","16:40");
+		const west = new Deco("西駐輪",["美童"],["壁"],[20221,20223],"16:20","16:40");
+		const south = new Deco("校舎南",["美童"],["壁"],[20221,20223],"16:20","16:40");
+		const _14HR = new Deco("14HR",["美童"],["壁"],[20221,20223],"16:20","16:40");
+		const _23HR = new Deco("23HR",["美童"],["壁"],[20221,20223],"16:20","16:40");
+		const _32HR = new Deco("32HR",["美童"],["壁"],[20221,20223],"16:20","16:40");
+		addDeco(parking);
+		addDeco(west);
+		addDeco(south);
+		addDeco(_14HR);
+		addDeco(_23HR);
+		addDeco(_32HR);
+	}
+	function addDeco(deco) {
+
+		let DOM = {
+			manager : "",
+			content : "",
+			WBS : "",
+			finish : "",
+			evacuation : "",
+		};
+
+
+		console.log(deco.place);
+
+		switch(deco.place) {
+			case "駐輪場":
+				{
+					DOM.manager = document.querySelector("#manager_parking");
+					DOM.content = document.querySelector("#content_parking");
+					DOM.WBS = document.querySelector("#WBS_parking");
+					DOM.finish = document.querySelector("#finish_parking");
+					DOM.evacuation = document.querySelector("#evacuation_parking");
+				}
+			break;
+			case "西駐輪":
+				{
+					DOM.manager = document.querySelector("#manager_paint_west");
+					DOM.content = document.querySelector("#content_paint_west");
+					DOM.WBS = document.querySelector("#WBS_paint_west");
+					DOM.finish = document.querySelector("#finish_paint_west");
+					DOM.evacuation = document.querySelector("#evacuation_paint_west");
+				}
+			break;
+			case "校舎南":
+				{
+					DOM.manager = document.querySelector("#manager_paint_south");
+					DOM.content = document.querySelector("#content_paint_south");
+					DOM.WBS = document.querySelector("#WBS_paint_south");
+					DOM.finish = document.querySelector("#finish_paint_south");
+					DOM.evacuation = document.querySelector("#evacuation_paint_south");
+				}
+			break;
+			case "14HR":
+				{
+					DOM.manager = document.querySelector("#manager_14HR");
+					DOM.content = document.querySelector("#content_14HR");
+					DOM.WBS = document.querySelector("#WBS_14HR");
+					DOM.finish = document.querySelector("#finish_14HR");
+					DOM.evacuation = document.querySelector("#evacuation_14HR");
+				}
+			break;
+			case "23HR":
+				{
+					DOM.manager = document.querySelector("#manager_23HR");
+					DOM.content = document.querySelector("#content_23HR");
+					DOM.WBS = document.querySelector("#WBS_23HR");
+					DOM.finish = document.querySelector("#finish_23HR");
+					DOM.evacuation = document.querySelector("#evacuation_23HR");
+				}
+			break;
+			case "32HR":
+				{
+					DOM.manager = document.querySelector("#manager_32HR");
+					DOM.content = document.querySelector("#content_32HR");
+					DOM.WBS = document.querySelector("#WBS_32HR");
+					DOM.finish = document.querySelector("#finish_32HR");
+					DOM.evacuation = document.querySelector("#evacuation_32HR");
+				}
+			break;
+			default:
+				{
+					console.error("get unknown place in addDeco(functino)");
+				}
+			break;
+		}
+
+		DOM.manager.innerHTML = deco.manager;
+		DOM.content.innerHTML = deco.work_content;
+		DOM.WBS.innerHTML = deco.WBS_No;
+		DOM.finish.innerHTML = deco.finish_date;
+		DOM.evacuation.innerHTML = deco.evacuation_date;
+
+	}
+	function addWeather() {
+		const weather_list = {
+			sun: "🌞",
+			cound: "⛅",
+			rain: "☂",
+			rainbow: "🌈",
+		};
+		//!todo fetch
+		const weather_date = "sun";
+
+		const weather_icon = [weather_list[weather_date]];
+		document.querySelector("#weather_icon").innerHTML = `${weather_icon}`;
+	}
 	function addDate() {
 		const week = ["日","月","火","水","木","金","土"];
 		const date = new Date();
@@ -20,6 +287,35 @@
 		const weekday = week[date.getDay()];
 		document.querySelector("#date").innerHTML = `${month}月${day}日(${weekday})タスク表`;
 	}
+	function addWBGT() {
+		const WBGT_list = ["danger", "strict caution","caution","attention"];
+		const DOM = document.querySelector("#WBGT");
+		DOM.innerHTML = "危険";
+
+	}
+	function addTotalDay() {
+		const totalDay = 1;// todo! get total day
+		const DOM = document.querySelector("#todal_day");
+		DOM.innerHTML = `${totalDay}日目`;
+	}
+	function addTemp() {
+		//!todo fetch
+		const temp = 35;
+		const DOM = document.querySelector("#temp");
+		DOM.innerHTML = temp;
+	}
+	function addShime() {
+		const start = "19:00";
+		const DOM = document.querySelector("#shime_time");
+		DOM.innerHTML = start;
+	}
+	function addRemarks(remarks_list) {
+		const DOM = document.querySelector("#remarks");
+		for(remark of remarks_list) {
+			DOM.innerHTML += `<li>${remark}</li>`;
+		}
+	}
+
 }
 
 </script>
