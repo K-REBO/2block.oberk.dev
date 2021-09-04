@@ -20,117 +20,166 @@
 </head>
 <body class="text-center">
 	<h1 id="date" class="text-5xl"></h1>
-	<h2 class="text-2xl">天気: <span id="weather_icon"></span></h2>
-	<h2 class="text-2xl">気温: <span id="temp"></span>℃</h2>
-	<h2 class="text-2xl" >暑さ指数:<span id="WBGT"></span></h2>
-	<h2 class="text-2xl">作業日数: <span id="todal_day"></span></h2>
-	<h2 class="text-2xl">締め時間: <span id="shime_time"></span></h2>
-	<h2 class="text-2xl">締め場所: <span id="shime_place"></span></h2>
-
-	<table class="m-auto text-2xl" style="width: 95%; height: 50ex;">
+	
+	<table class="text-2xl mx-auto my-5 rounded-xl">
 		<thead>
-			<tr>
-				<td>作業場所</td>
-				<td>担当</td>
-				<td>作業内容</td>
-				<td>WBS No.</td>
-				<td>作業終了</td>
-				<td>撤退時間</td>
-			</tr>
+			<td>天気</td>
+			<td>気温</td>
+			<td>暑さ指数</td>
+			<td>作業日数</td>
 		</thead>
 		<tbody>
 			<tr>
-				<td>駐輪場</td>
-				<td id="manager_parking"   ></td>
-				<td id="content_parking"   ></td>
-				<td id="WBS_parking"       ></td>
-				<td id="finish_parking"    ></td>
-				<td id="evacuation_parking"></td>
+				<td><span id="weather_icon"></span></td>
+				<td><span id="temp"></span>℃</td>
+				<td><span id="WBGT"></span></td>
+				<td><span id="todal_day"></span></td>
 			</tr>
-			<tr>
-				<td><div>ペンキ場</div><div>(西駐輪)</div></td>
-				<td id="manager_paint_west"   >2</td>
-				<td id="content_paint_west"   >3</td>
-				<td id="WBS_paint_west"       >4</td>
-				<td id="finish_paint_west"    >5</td>
-				<td id="evacuation_paint_west">6</td>
-			</tr>
-			<tr>
-				<td><div>ペンキ場</div><div>(校舎南)</div></td>
-				<td id="manager_paint_south"   >2</td>
-				<td id="content_paint_south"   >3</td>
-				<td id="WBS_paint_south"       >4</td>
-				<td id="finish_paint_south"    >5</td>
-				<td id="evacuation_paint_south">6</td>
-			</tr>
-			<tr>
-				<td><div>教室</div><div>(14HR)</div></td>
-				<td id="manager_14HR"   >2</td>
-				<td id="content_14HR"   >3</td>
-				<td id="WBS_14HR"       >4</td>
-				<td id="finish_14HR"    >5</td>
-				<td id="evacuation_14HR">6</td>
-			</tr>
-			<tr>
-				<td><div>教室</div><div>(23HR)</div></td>
-				<td id="manager_23HR"   >2</td>
-				<td id="content_23HR"   >3</td>
-				<td id="WBS_23HR"       >4</td>
-				<td id="finish_23HR"    >5</td>
-				<td id="evacuation_23HR">6</td>
-			</tr>
-			<tr>
-				<td><div>教室</div><div>(32HR)</div></td>
-				<td id="manager_32HR"   >2</td>
-				<td id="content_32HR"   >3</td>
-				<td id="WBS_32HR"       >4</td>
-				<td id="finish_32HR"    >5</td>
-				<td id="evacuation_32HR">6</td>
-			</tr>
+
 		</tbody>
 	</table>
 
-	<div class="mt-10">
-		<span class="text-4xl">ST練</span>
-		<table class="text-2xl mt-3 mx-auto">
+
+	<div class="grid grid-cols-2">
+		<table class="mx-auto text-2xl" style="width: 95%; height: 40ex;">
 			<thead>
 				<tr>
-					<th>時間</th>
-					<th>場所</th>
-					<th>役</th>
+					<td>作業場所</td>
+					<td width="22%">担当</td>
+					<td>作業内容</td>
+					<td>WBS No.</td>
+					<td>作業終了</td>
+					<td>撤退時間</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>12:35 ~ 13:00</td>
-					<td>第一会議室</td>
-					<td>フィナーレ</td>
+					<td>駐輪場</td>
+					<td id="manager_parking"   ></td>
+					<td id="content_parking"   ></td>
+					<td id="WBS_parking"       ></td>
+					<td id="finish_parking"    ></td>
+					<td id="evacuation_parking"></td>
+				</tr>
+				<tr>
+					<td><div>ペンキ場</div><div>(校舎南<span id="paint_south_code"></span>)</div></td>
+					<td id="manager_paint_south"   >2</td>
+					<td id="content_paint_south"   >3</td>
+					<td id="WBS_paint_south"       >4</td>
+					<td id="finish_paint_south"    >5</td>
+					<td id="evacuation_paint_south">6</td>
+				</tr>
+				<tr>
+					<td><div>ペンキ場</div><div>(駐輪場<span id="paint_parking_code"></span>)</div></td>
+					<td id="manage_paint_parking"   >2</td>
+					<td id="content_paint_parking"   >3</td>
+					<td id="WBS_paint_parking"       >4</td>
+					<td id="finish_paint_parking"    >5</td>
+					<td id="evacuation_paint_parking">6</td>
+				</tr>
+				<tr>
+					<td><div>ペンキ場</div><div>(新体<span id="paint_gym_code"></span>)</div></td>
+					<td id="manager_paint_gym"   >2</td>
+					<td id="content_paint_gym"   >3</td>
+					<td id="WBS_paint_gym"       >4</td>
+					<td id="finish_paint_gym"    >5</td>
+					<td id="evacuation_paint_gym">6</td>
+				</tr>
+				<tr>
+					<td><div>教室</div><div>(14HR)</div></td>
+					<td id="manager_14HR"   >2</td>
+					<td id="content_14HR"   >3</td>
+					<td id="WBS_14HR"       >4</td>
+					<td id="finish_14HR"    >5</td>
+					<td id="evacuation_14HR">6</td>
+				</tr>
+				<tr>
+					<td><div>教室</div><div>(23HR)</div></td>
+					<td id="manager_23HR"   >2</td>
+					<td id="content_23HR"   >3</td>
+					<td id="WBS_23HR"       >4</td>
+					<td id="finish_23HR"    >5</td>
+					<td id="evacuation_23HR">6</td>
+				</tr>
+				<tr>
+					<td><div>教室</div><div>(32HR)</div></td>
+					<td id="manager_32HR"   >2</td>
+					<td id="content_32HR"   >3</td>
+					<td id="WBS_32HR"       >4</td>
+					<td id="finish_32HR"    >5</td>
+					<td id="evacuation_32HR">6</td>
 				</tr>
 			</tbody>
 		</table>
+
+		<div>
+			<div>
+				<span class="text-4xl">締め</span>
+
+				<table class="mx-auto text-2xl">
+					<thead>
+						<tr>
+							<td>
+								締め場所
+							</td>
+							<td>
+								締め時間
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<span id="shime_time"></span>
+							</td>
+							<td>
+								<span id="shime_place"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="mt-10">
+				<span class="text-4xl">ST練</span>
+				<table class="text-2xl mt-3 mx-auto">
+					<thead>
+						<tr>
+							<th>時間</th>
+							<th>場所</th>
+							<th>役</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="mt-10">
+				<span class="text-4xl">競技練</span>
+				<table class="text-2xl mt-3 mx-auto">
+					<thead>
+						<tr>
+							<th>時間</th>
+							<th>場所</th>
+							<th>役</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
-
-	<div class="mt-10">
-		<span class="text-4xl">競技練</span>
-		<table class="text-2xl mt-3 mx-auto">
-			<thead>
-				<tr>
-					<th>時間</th>
-					<th>場所</th>
-					<th>役</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>16:35 ~ 17:00</td>
-					<td>運動場</td>
-					<td>SCAT-MEN</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-
 
 	<div class="border-2 border-black rounded-lg mt-3 mb-5 mx-auto" style="width:95%">
 		<span class="text-3xl">特記事項</span>
@@ -141,6 +190,7 @@
 </body>
 <script>
 {"use strict"
+	const totalDay = 2;//Todo FETCH!
 
 	class Deco {
 		place;
@@ -159,7 +209,6 @@
 		}
 	}
 
-
 	addDate();
 	addWeather();
 	getDeco();
@@ -167,23 +216,115 @@
 	addTotalDay();
 	addTemp();
 	addShime();
-	addRemarks(["リサ木配布あり","鉄パ搬入"]);
+	addRemarks([
+		"リサ木 16:50 リサ木倉庫",
+		"新規木材配布 17:30 テニスコート横",
+	]);
+	addPaintCode();
+
+
+	function addPaintCode() {
+		const gymDOM = document.querySelector("#paint_gym_code");
+		const parkingDOM = document.querySelector("#paint_parking_code");
+		const southDOM = document.querySelector("#paint_south_code");
+		const paint_code = [
+			{
+				south:"コ",
+				parking:"B",
+				gym:"γ",
+			},
+			{
+				south:"C",
+				parking:"キ",
+				gym:"",
+			},
+			{
+				south:"D",
+				parking:"エ",
+				gym:"なし",
+			},
+			{
+				south:"E",
+				parking:"ア",
+				gym:"なし",
+			},
+			{
+				south:"F",
+				parking:"ケ",
+				gym:"β",
+			},
+			{
+				south:"G",
+				parking:"カ",
+				gym:"なし",
+			},
+			{
+				south:"H",
+				parking:"ウ",
+				gym:"なし",
+			},
+			{
+				south:"I",
+				parking:"コ",
+				gym:"γ",
+			},
+			{
+				south:"A",
+				parking:"ク",
+				gym:"なし",
+			},
+			{
+				south:"B",
+				parking:"オ",
+				gym:"なし",
+			},
+			{
+				south:"C",
+				parking:"イ",
+				gym:"なし",
+			},
+			{
+				south:"D",
+				parking:"なし ",
+				gym:"なし",
+			},
+			{
+				south:"E",
+				parking:"なし",
+				gym:"なし",
+			},
+			{
+				south:"F",
+				parking:"なし",
+				gym:"なし",
+			},
+		];
+		gymDOM.innerHTML = paint_code[totalDay - 1]["gym"];
+		parkingDOM.innerHTML = paint_code[totalDay - 1]["parking"];
+		southDOM.innerHTML = paint_code[totalDay - 1]["south"];
+		
+	}
 
 	function getDeco() {
 		// !TODO fethc data
-		const parking = new Deco("駐輪場",["美童"],["壁"],[20221,20223],"16:20","16:40");
-		const west = new Deco("西駐輪",["美童"],["壁"],[20221,20223],"16:20","16:40");
-		const south = new Deco("校舎南",["美童"],["壁"],[20221,20223],"16:20","16:40");
-		const _14HR = new Deco("14HR",["美童"],["壁"],[20221,20223],"16:20","16:40");
-		const _23HR = new Deco("23HR",["美童"],["壁"],[20221,20223],"16:20","16:40");
-		const _32HR = new Deco("32HR",["美童"],["壁"],[20221,20223],"16:20","16:40");
+		const parking = 		new Deco("駐輪場"	   ,["美童"],["内壁"],["2202から2207"],"18:15","18:45");
+		const paint_parking = 	new Deco("ペンキ駐輪場"	,["そら"],["内壁塗り"],["2201から"],"18:00","18:30");
+		const paing_south = 	new Deco("ペンキ校舎南"	,["✖"],["✖"],["✖"],"✖","✖");
+		const paint_gym = 		new Deco("ペンキ新体"   ,["✖"],["✖"],["✖"],"✖","✖");
+		const _14HR = 			new Deco("14HR"		  ,["✖"],["✖"],["✖"],"✖","✖");
+		const _23HR = 			new Deco("23HR"		  ,["✖"],["✖"],["✖"],"✖","✖");
+		const _32HR = 			new Deco("32HR"		  ,["あらた","ひゅうが","えいと","豊島"],["外壁"],["2501から2509"],"16:30","17:00");
+
+
 		addDeco(parking);
-		addDeco(west);
-		addDeco(south);
+		addDeco(paint_parking);
+		addDeco(paing_south);
+		addDeco(paint_gym);
 		addDeco(_14HR);
 		addDeco(_23HR);
 		addDeco(_32HR);
 	}
+	
 	function addDeco(deco) {
 
 		let DOM = {
@@ -207,22 +348,31 @@
 					DOM.evacuation = document.querySelector("#evacuation_parking");
 				}
 			break;
-			case "西駐輪":
+			case "ペンキ駐輪場":
 				{
-					DOM.manager = document.querySelector("#manager_paint_west");
-					DOM.content = document.querySelector("#content_paint_west");
-					DOM.WBS = document.querySelector("#WBS_paint_west");
-					DOM.finish = document.querySelector("#finish_paint_west");
-					DOM.evacuation = document.querySelector("#evacuation_paint_west");
+					DOM.manager = document.querySelector("#manage_paint_parking");
+					DOM.content = document.querySelector("#content_paint_parking");
+					DOM.WBS = document.querySelector("#WBS_paint_parking");
+					DOM.finish = document.querySelector("#finish_paint_parking");
+					DOM.evacuation = document.querySelector("#evacuation_paint_parking");
 				}
 			break;
-			case "校舎南":
+			case "ペンキ校舎南":
 				{
 					DOM.manager = document.querySelector("#manager_paint_south");
 					DOM.content = document.querySelector("#content_paint_south");
 					DOM.WBS = document.querySelector("#WBS_paint_south");
 					DOM.finish = document.querySelector("#finish_paint_south");
 					DOM.evacuation = document.querySelector("#evacuation_paint_south");
+				}
+			break;
+			case "ペンキ新体":
+				{
+					DOM.manager = document.querySelector("#manager_paint_gym");
+					DOM.content = document.querySelector("#content_paint_gym");
+					DOM.WBS = document.querySelector("#WBS_paint_gym");
+					DOM.finish = document.querySelector("#finish_paint_gym");
+					DOM.evacuation = document.querySelector("#evacuation_paint_gym");
 				}
 			break;
 			case "14HR":
@@ -274,7 +424,7 @@
 			rainbow: "🌈",
 		};
 		//!todo fetch
-		const weather_date = "sun";
+		const weather_date = "rain";
 
 		const weather_icon = [weather_list[weather_date]];
 		document.querySelector("#weather_icon").innerHTML = `${weather_icon}`;
@@ -290,17 +440,15 @@
 	function addWBGT() {
 		const WBGT_list = ["danger", "strict caution","caution","attention"];
 		const DOM = document.querySelector("#WBGT");
-		DOM.innerHTML = "危険";
-
+		DOM.innerHTML = "?";
 	}
 	function addTotalDay() {
-		const totalDay = 1;// todo! get total day
 		const DOM = document.querySelector("#todal_day");
 		DOM.innerHTML = `${totalDay}日目`;
 	}
 	function addTemp() {
 		//!todo fetch
-		const temp = 35;
+		const temp = "?";
 		const DOM = document.querySelector("#temp");
 		DOM.innerHTML = temp;
 	}
@@ -315,8 +463,6 @@
 			DOM.innerHTML += `<li>${remark}</li>`;
 		}
 	}
-
 }
-
 </script>
 </html>
