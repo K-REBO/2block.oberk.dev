@@ -130,10 +130,10 @@
 					<tbody>
 						<tr>
 							<td>
-								<span id="shime_time"></span>
+								<span id="shime_place"></span>
 							</td>
 							<td>
-								<span id="shime_place"></span>
+								<span id="shime_time"></span>
 							</td>
 						</tr>
 					</tbody>
@@ -151,9 +151,19 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>15:30</td>
+							<td>東駐輪一階</td>
+							<td>全</td>
+						</tr>
+						<tr>
+							<td>16:30</td>
+							<td>視聴覚室</td>
+							<td>全</td>
+						</tr>
+						<tr>
+							<td>17:30</td>
+							<td>ピロティ</td>
+							<td>全</td>
 						</tr>
 					</tbody>
 				</table>
@@ -190,7 +200,7 @@
 </body>
 <script>
 {"use strict"
-	const totalDay = 2;//Todo FETCH!
+	const totalDay = 3;//Todo FETCH!
 
 	class Deco {
 		place;
@@ -217,8 +227,7 @@
 	addTemp();
 	addShime();
 	addRemarks([
-		"リサ木 16:50 リサ木倉庫",
-		"新規木材配布 17:30 テニスコート横",
+		"塩ビ 16:00 塩ビ倉庫",
 	]);
 	addPaintCode();
 
@@ -307,13 +316,13 @@
 
 	function getDeco() {
 		// !TODO fethc data
-		const parking = 		new Deco("駐輪場"	   ,["美童"],["内壁"],["2202から2207"],"18:15","18:45");
-		const paint_parking = 	new Deco("ペンキ駐輪場"	,["そら"],["内壁塗り"],["2201から"],"18:00","18:30");
-		const paing_south = 	new Deco("ペンキ校舎南"	,["✖"],["✖"],["✖"],"✖","✖");
+		const parking = 		new Deco("駐輪場"	   ,["美童","豊島","千鶴","ひゅうが"],["パン","バッテリー",'目玉焼き'],["1100","3301切り出し"],"18:15","18:45");
+		const paint_parking = 	new Deco("ペンキ駐輪場"	,[""],["内壁塗り"],["2201から"],"18:00","18:30");
+		const paing_south = 	new Deco("ペンキ校舎南"	,["そら"],["✖"],["✖"],"✖","✖");
 		const paint_gym = 		new Deco("ペンキ新体"   ,["✖"],["✖"],["✖"],"✖","✖");
 		const _14HR = 			new Deco("14HR"		  ,["✖"],["✖"],["✖"],"✖","✖");
 		const _23HR = 			new Deco("23HR"		  ,["✖"],["✖"],["✖"],"✖","✖");
-		const _32HR = 			new Deco("32HR"		  ,["あらた","ひゅうが","えいと","豊島"],["外壁"],["2501から2509"],"16:30","17:00");
+		const _32HR = 			new Deco("32HR"		  ,["あらた","えいと"],["外壁"],["2501から2509"],"16:30","17:00");
 
 
 		addDeco(parking);
@@ -424,7 +433,7 @@
 			rainbow: "🌈",
 		};
 		//!todo fetch
-		const weather_date = "rain";
+		const weather_date = "sun";
 
 		const weather_icon = [weather_list[weather_date]];
 		document.querySelector("#weather_icon").innerHTML = `${weather_icon}`;
@@ -453,7 +462,7 @@
 		DOM.innerHTML = temp;
 	}
 	function addShime() {
-		const start = "19:00";
+		const start = "18:45";
 		const DOM = document.querySelector("#shime_time");
 		DOM.innerHTML = start;
 	}
