@@ -6,26 +6,33 @@
 	<link rel="author" href="https://www.oberk.dev/humans.txt"/>
 	<link rel="stylesheet" href="output.css">
 	<title>2block</title>
+	<style>
+		svg {
+			display:inline;
+		}
+	</style>
 </head>
-<body class="bold text-center" style="width: 100%;height: 100%;background: #fff6f6;">
-
-
+<body class="bold text-center" style="background: #fff6f6;">
 
 	<img id="flash" src="assets/flash.png" style="height: 10%; z-index: 1000;" class="fixed left-45 top-200">
 
+	<header class="grid grid-cols-3">
+		<a href="https://oberk.dev">
+			<svg xmlns="http://www.w3.org/2000/svg" class="w-32" viewBox="0 0 24 24" fill="none" stroke="#fadbdb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+		</a>
+		<a href="https://oberk.dev">
+			<svg xmlns="http://www.w3.org/2000/svg" class="w-32" viewBox="0 0 24 24" fill="none" stroke="#fadbdb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></a>
+		<a href="https://oberk.dev">
+			<svg xmlns="http://www.w3.org/2000/svg" class="w-32" viewBox="0 0 24 24" fill="none" stroke="#fadbdb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></a>
+	</header>
 
 	<div style="position: absolute;">
-		<div onclick="console.log(666)">
-			<svg style="pointer-events: none;" class="w-30 h-30 fixed right-8 top-6" fill="none" stroke="gray" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-			</svg>
-		</div>
 		<div id="menu" style="visibility: hidden;">
 			asdflkasjdlfkasjdf;lask
 		</div>
-
+<!--  -->
 		<img src="assets/2block.png" style="width: max-content;left: 4%; top:0%" class="fixed">
-
+<!--  -->
 		<img src="assets/oven/people.png"
 		id="oven"
 		style="
@@ -88,6 +95,9 @@ let flash = document.querySelector("#flash");
 
 let menu_opened = false;
 const menu_el = document.querySelector("#menu");
+function menu_clicked () {
+	alert("AA");
+}
 
 
 let oven = document.getElementById("oven");
