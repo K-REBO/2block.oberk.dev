@@ -7,3 +7,6 @@ css:
 	windicss	-tm	view/mesure/index.html		-o	view/mesure/output.css
 	windicss	-tm	view/number/index.html		-o	view/number/output.css
 	windicss	-tm	index.html		-o	output.css
+	windicss	-tm	introduce/index.html		-o	introduce/output.css
+	windicss	-tm	people/index.html		-o	people/output.css
+	windicss	-tm	about/index.html		-o	about/output.css
