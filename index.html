@@ -14,28 +14,14 @@
 </head>
 <body class="bold text-center" style="background: #fff6f6;">
 
-	<img id="flash" src="assets/flash.png" style="height: 10%; z-index: 1000;" class="fixed left-45 top-200">
-
-	<header class="grid grid-cols-3">
-		<a href="https://oberk.dev">
-			<svg xmlns="http://www.w3.org/2000/svg" class="w-32" viewBox="0 0 24 24" fill="none" stroke="#fadbdb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
-		</a>
-		<a href="https://oberk.dev">
-			<svg xmlns="http://www.w3.org/2000/svg" class="w-32" viewBox="0 0 24 24" fill="none" stroke="#fadbdb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></a>
-		<a href="https://oberk.dev">
-			<svg xmlns="http://www.w3.org/2000/svg" class="w-32" viewBox="0 0 24 24" fill="none" stroke="#fadbdb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></a>
-	</header>
+	<img id="flash" src="assets/flash.png" style="height: 10%; z-index: 3000;" class="fixed left-45 top-200">
 
 	<div style="position: absolute;">
-		<div id="menu" style="visibility: hidden;">
-			asdflkasjdlfkasjdf;lask
-		</div>
-<!--  -->
 		<img src="assets/2block.png" style="width: max-content;left: 4%; top:0%" class="fixed">
-<!--  -->
 		<img src="assets/oven/people.png"
 		id="oven"
 		style="
+		z-index: 2000;
 		height:25%;
 		top:35%;
 		left: 20%;
@@ -45,11 +31,11 @@
 		<img src="assets/fukidashi.PNG" style="width: 60ex; left: 50%; top:20%" class="fixed">
 	</div>
 
-	<div class="fixed top-350">
+	<div class="mt-250 absolute right-15">
 		<h1 style="text-decoration: underline; font-size: 400%;">
 			Our works
 		</h1>
-		<div class="bg-white rounded-xl mx-auto" style="width:100%; height:fit-content">
+		<div class="" style="width:100%; height:fit-content">
 			<img src="assets/oven.GIF" class="mx-auto my-auto">
 		</div>
 	</div>
@@ -80,7 +66,7 @@ let flash = document.querySelector("#flash");
 										setTimeout(() => {
 											flash.style.opacity = 0.1;
 											setTimeout(() => {
-												flash.style.opacity = 0;
+												flash.remove()
 											}, 110);
 										}, 110);
 									}, 110);
@@ -116,26 +102,19 @@ oven.addEventListener("click",(e) => {
 
 	
 
-	const x = e.offsetX * x_magnification;
-	const y = e.offsetY * y_magnification;
+	const x = e.offsetX;
+	const y = e.offsetY;
 
-
-	console.log(`
-		height:${window.outerHeight}
-		width:${window.innerWidth}
-		x_magnification:${innerHeight},
-		y_magnification:${y_magnification},
-		offsetX:${x}
-		offsetY:${y}
-	`)
-
-	const left_limit = 990;
-	const right_limit = 1140;
-	const top_limit = 900;
-	const bottom_limit = 770;
-
-	
-	const button_clicked = (left_limit < x && x < right_limit) && (bottom_limit < y && y < top_limit);
+	// let debug_el = document.getElementById("debug");
+	// debug_el.innerHTML = `
+	// offsetX:${x},
+	// offsetY:${y}
+	// height:${window.outerHeight}
+	// width:${window.innerWidth}
+	// x_magnification:${innerHeight},
+	// y_magnification:${y_magnification},
+	// `;
+	const button_clicked = (y < window.outerHeight/2) && (x > window.outerWidth/2);
 
 
 
