@@ -122,19 +122,25 @@ oven.addEventListener("click",(e) => {
 		if(!button_clicked) {
 			window.location.href = "https://2block.oberk.dev/people";
 		}
-		oven.src = src.replace(oven_enum.people,oven_enum.about);
+		else {
+			oven.src = src.replace(oven_enum.people,oven_enum.about);
+		}
 	}
 	else if(oven.src.includes(oven_enum.about)) {
 		if(!button_clicked) {
 			window.location.href = "https://2block.oberk.dev/about";
 		}
-		oven.src = src.replace(oven_enum.about,oven_enum.cg);
+		else {
+			oven.src = src.replace(oven_enum.about,oven_enum.cg);
+		}
 	}
 	else if(oven.src.includes(oven_enum.cg)) {
 		if(!button_clicked) {
 			window.location.href = "https://2block.oberk.dev/view";
 		}
-		oven.src = src.replace(oven_enum.cg,oven_enum.people);
+		else {
+			oven.src = src.replace(oven_enum.cg,oven_enum.people);
+		}
 	}
 
 
